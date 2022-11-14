@@ -24,7 +24,7 @@ jobs:
         subscription: ${{ secrets.SUBSCRIPTION_ID }}
         resourceGroup: ${{ secrets.AZURE_RG }}
         templateFile: ./storagedeploy.json
-        parameters: storageAccountType=Standard_LRS
+        additionalParameters: storageAccountType=Standard_LRS
       
     - name: Run ARM deploy
       uses: azure/arm-deploy@v1
