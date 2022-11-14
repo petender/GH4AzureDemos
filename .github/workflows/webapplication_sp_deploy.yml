@@ -2,7 +2,7 @@
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 # This pipeline uses an Azure Service Principal as credentials, instead of a Publish Profile
 
-name: .NET Core
+name: Azure App Deployment with Service Principal
 
 on: [push]
 
