@@ -1,0 +1,38 @@
+name: ARM Template deployment
+on:
+  push:
+    branches:
+    - main
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+
+      # Checkout code
+    - uses: actions/checkout@main
+
+      # Log into Azure
+    - uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      # Deploy ARM template
+      
+    - name: Preview changes
+      uses: Azure/deployment-what-if-action@v1.0.0
+      with:
+        subscription: ${{ secrets.SUBSCRIPTION_ID }}
+        resourceGroup: ${{ secrets.AZURE_RG }}
+        templateFile: ./storagedeploy.json
+        parameters: storageAccountType=Standard_LRS
+      
+    - name: Run ARM deploy
+      uses: azure/arm-deploy@v1
+      with:
+        subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+        resourceGroupName: ${{ secrets.AZURE_RG }}
+        template: ./storagedeploy.json
+        parameters: storageAccountType=Standard_LRS
+
+      # output containerName variable from template
+    - run: echo ${{ steps.deploy.outputs.containerName }}
