@@ -7,7 +7,7 @@ name: Azure App Deployment with Service Principal
 on: [push]
 
 env:
-  AZURE_WEBAPP_NAME: WebApplication4sp
+  AZURE_WEBAPP_NAME: pdtwebapp1
   AZURE_WEBAPP_PACKAGE_PATH: .\published
   CONFIGURATION: Release
   DOTNET_CORE_VERSION: 8.0.x
