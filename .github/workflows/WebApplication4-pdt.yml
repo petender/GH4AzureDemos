@@ -1,4 +1,4 @@
-name: Build and deploy .NET Core application to Web App WebApplication4-pdt
+name: Build and deploy Azure WebApp using Publish Profile
 on:
   push:
     branches:
